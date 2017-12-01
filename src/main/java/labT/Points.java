@@ -23,7 +23,7 @@ public class Points implements Serializable {
     }
   //TODO добавить нормальную проверку!!!
     public boolean checkHitted() {
-        if ()  {
+        if (x==0)  {
             hitted = true;
         } else {
             hitted = false;
