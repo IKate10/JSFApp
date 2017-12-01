@@ -21,11 +21,9 @@ public class Points implements Serializable {
         this.r = r;
         checkHitted();
     }
-
+  //TODO добавить нормальную проверку!!!
     public boolean checkHitted() {
-        if ((y <= (x / 2.0 + r / 2.0) && y >= 0.0 && x <= 0.0)
-                || (x >= -r && x <= 0.0 && y >= -r / 2.0 && y <= 0.0)
-                || (x >= 0.0 && y <= 0.0 && (x * x + y * y) <= r * r)) {
+        if ()  {
             hitted = true;
         } else {
             hitted = false;
