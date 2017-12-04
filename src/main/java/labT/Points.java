@@ -23,10 +23,18 @@ public class Points implements Serializable {
     }
   //TODO добавить нормальную проверку!!!
     public boolean checkHitted() {
-        if (x==0)  {
-            hitted = true;
-        } else {
-            hitted = false;
+        hitted=false;
+        if(x<=0&&y>=0){
+            if(x>=r/-2||y<=r)
+                hitted=true;
+        }
+        if(x>=0&&y>=0) {
+            if (x*x+y*y<=Math.pow(r/2,2))
+                hitted = true;
+        }
+        if(x>=0&&y<=0) {
+            if (y<=x-r)
+                hitted = true;
         }
         return hitted;
     }
