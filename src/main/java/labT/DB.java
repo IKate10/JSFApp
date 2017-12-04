@@ -7,15 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
-import org.hibernate.ScrollMode;
-import org.hibernate.ScrollableResults;
-import org.hibernate.Session;
-import org.hibernate.Query;
+import org.hibernate.*;
 import com.user.util.HibernateUtil;
 import com.user.DBUser;
 
-import oracle.ucp.jdbc.PoolDataSourceFactory;
-import oracle.ucp.jdbc.PoolDataSource;
+//import oracle.ucp.jdbc.PoolDataSourceFactory;
+//import oracle.ucp.jdbc.PoolDataSource;
 
 public class DB {
 
@@ -44,7 +41,7 @@ public class DB {
 
     public void addPoint(Points point) throws SQLException {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.createQuery("insert into point(x, y, r, ishitted) VALUES (" + point.getX() + ", " + point.getY() + ", "
+        session.createSQLQuery("insert into point(x, y, r, ishitted) VALUES (" + point.getX() + ", " + point.getY() + ", "
                 + point.getR() + ", " + point.isHitted() + ")");
         session.close();
     }
@@ -52,7 +49,11 @@ public class DB {
     public List<Points> getAllPoints() throws SQLException {
         List<Points> points = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createQuery("SELECT * FROM point");    //хз вот что тут ему не нравится
+        SQLQuery query = session.createSQLQuery("SELECT * FROM point");    //хз вот что тут ему не нравится
+        /*
+        я починиль. а не нравилось ему то что createQuery ипользует HQL а не SQL а это немного разные вещи
+        */
+
         int pageSize = 10;
 
         ScrollableResults resultScroll = query.scroll(ScrollMode.FORWARD_ONLY);

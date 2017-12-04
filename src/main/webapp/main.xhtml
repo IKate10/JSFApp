@@ -7,137 +7,12 @@
 <h:head>
     <title>Lab9 var.21274</title>
 
-    <script src="recources/js/check.js" type="text/javascript"/>
-    <style type="text/css" media="all">
-        mm {
-            font-size: 15px;
-            font-family: monospace;
-            color: #000000;
-        }
+    <script src="resources/js/check.js" type="text/javascript"/>
 
-        mm[title] {
-            color: #2165d3;
-        }
-
-        BODY {
-            background: #fbfdff;
-        }
-
-        mm > mm[title] {
-            color: #000000;
-            font-family: 'Times New Roman', serif;
-        }
-
-        error {
-            font-size: 15px;
-            font-family: monospace;
-            color: #FF0000;
-        }
-
-        DIV {
-            padding: 20px;
-            background-color: #03acea;
-            background-image: linear-gradient(rgba(255, 255, 255, .2) 1px, rgba(255, 255, 255, 0) 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, .2) 1px, rgba(255, 255, 255, 0) 1px);
-            background-size: 10px 10px;
-            border-radius: 5px;
-            text-align: center;
-            font: 25px/1 Georgia;
-            color: #FFF;
-        }
-
-        DIV:before,
-        DIV:after {
-            display: inline-block;
-            padding: 3px 7px;
-            font-style: normal;
-            border: 1px dashed;
-        }
-
-        DIV:before {
-            content: "Лабораторная работа";
-            margin-right: 20px;
-        }
-
-        DIV:after {
-            content: "№3";
-            margin-left: 20px;
-        }
-
-        .tableR {
-            border-spacing: 10px;
-            border: 1px;
-        }
-
-        .tableR td,
-        .tableR th {
-            padding: 10px;
-            border-left: 1px solid;
-            border-top: 1px solid;
-            border-bottom: 1px solid;
-            border-right: 1px solid;
-            border-radius: 10px;
-        }
-
-        .tableR th {
-            background: #ffffff;
-            border-top: 1px solid;
-            border-bottom: 1px solid;
-            border-right: 1px solid;
-            border-radius: 10px;
-        }
-        .p-spinner {
-            width:30px;
-            background-color: white;
-        }
-        #name {
-            font-size: 270%;
-        }
-
-        #group {
-            font-size: 150%;
-        }
-
-        .left {
-            float: left;
-            width: 34.5%;
-            padding-left: 3px;
-            color: #001379;
-        }
-
-        .Xclass {
-            margin-right: 3px;
-            background: #b5fff8;
-            color: #001379;
-        }
-
-        .Xclass:hover, .addButton:hover, .begin:hover{
-            background: #a5d6f3;
-        }
-
-        .inLeft {
-            margin-top: 5px;
-        }
-
-        .addButton {
-            background: #b5fff8;
-            color: #001379;
-        }
-
-        canvas {
-            outline: 3px solid #000000;
-            border: 3px solid #fff;
-        }
-
-
-
-        .pseudo {
-            visibility: hidden;
-        }
-    </style>
 </h:head>
 <h:body>
-    <div></div>
+    <div class="spec"></div>
+    <h:outputStylesheet library="css" name="style.css"  />
     <h:form id="mainForm" style="padding-left: 15px; padding-top: 15px; padding-bottom: 10px">
         <table class="tableR" border="1" cellpadding="10px" cellspacing="10px" width="100%" align="center"
                style="padding: 150px">
@@ -149,7 +24,7 @@
 
                     X:
                 <p:inputText id="XVal" value="#{controller.point.x}"/>
-                <p:slider for="XVal" step="1" minValue="-20" maxValue="20"  />
+                <p:slider styleClass="slide" for="XVal" step="1" minValue="-20" maxValue="20"  />
 
                 <br/>
 
@@ -167,12 +42,12 @@
                 <h:message id="mesX" for="pseudoX"/>
 
 
-
-                <canvas id="canvas" class="inLeft" width="450px" height="400px"/>
                 <h:inputText maxlength="5" id="pseudoX" styleClass="pseudo" value="#{controller.point.x}" rendered="true" required="true"
                              requiredMessage="required" converterMessage="not a valid number">
                     <f:validator validatorId="XValidator"/>
                 </h:inputText>
+
+                <br/>
                 R:
 
                 <p:spinner id="RVal" stepFactor="0.25" value="#{controller.point.r}" size="10"/>
@@ -190,7 +65,8 @@
             </th>
 
                 <th>
-                    <h:graphicImage value="recources/images/image.jpeg" height="250px" width="250px"/>
+                    <canvas id="canvas" class="inLeft" width="450px" height="400px"/>
+
                 </th>
                 <h:commandButton class="begin" action="toBeginning" value="В начало"/>
 
@@ -221,6 +97,6 @@
 
     </h:form>
 
-    <div></div>
+    <div class="spec"></div>
 </h:body>
 </html>

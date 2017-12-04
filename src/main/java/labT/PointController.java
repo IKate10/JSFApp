@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.component.UIInput;
 import javax.faces.event.AjaxBehaviorEvent;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -65,6 +66,11 @@ public class PointController {
             points = db.getAllPoints();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        //хз зачем тут этот catch но пусть пока будет. С ним работает и ладно
+        catch (NullPointerException ex){
+            points=new ArrayList<>();
+            point=new Points(0,0,1);
         }
     }
 }

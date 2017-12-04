@@ -9,93 +9,12 @@
 
 <h:head>
     <title>Welcome to lab3</title>
-    <script src="recources/js/clock.js" type="text/javascript"/>
-    <style type = "text/css" media = "all">
-        mm {
-            font-size: 15px;
-            font-family: monospace;
-            color: #000000;
-        }
+    <script src="resources/js/clock.js" type="text/javascript"/>
 
-        mm[title] {
-            color: #2165d3;
-        }
-
-        BODY {
-            background: #fbfdff;
-        }
-
-        mm>mm[title] {
-            color: #000000;
-            font-family: 'Times New Roman', serif;
-        }
-
-        error {
-            font-size: 15px;
-            font-family: monospace;
-            color: #FF0000;
-        }
-
-
-        DIV {
-            padding: 20px;
-            background-color: #03acea;
-            background-image: linear-gradient(rgba(255, 255, 255, .2) 1px, rgba(255, 255, 255, 0) 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, .2) 1px, rgba(255, 255, 255, 0) 1px);
-            background-size: 10px 10px;
-            border-radius: 5px;
-            text-align: center;
-            font: 25px/1 Georgia;
-            color: #FFF;
-        }
-
-        DIV:before,
-        DIV:after {
-            display: inline-block;
-            padding: 3px 7px;
-            font-style: normal;
-            border: 1px dashed;
-        }
-
-        DIV:before {
-            content: "Лабораторная работа";
-            margin-right: 20px;
-        }
-
-        DIV:after {
-            content: "№3";
-            margin-left: 20px;
-        }
-
-        .tableR {
-            border-spacing: 10px;
-            border: 1px;
-        }
-
-        .tableR td,
-        .tableR th {
-            padding: 10px;
-            border-left: 1px solid;
-            border-top: 1px solid;
-            border-bottom: 1px solid;
-            border-right: 1px solid;
-            border-radius: 10px;
-        }
-
-        .tableR th {
-            background: #ffffff;
-            border-top: 1px solid;
-            border-bottom: 1px solid;
-            border-right: 1px solid;
-            border-radius: 10px;
-        }
-        .clockCloumn{
-            width: 50%;
-        }
-    </style>
 </h:head>
 <h:body>
-    <div></div>
+    <h:outputStylesheet library="css" name="style.css"  />
+    <div class="spec"></div>
     <table class="tableR" border="1" cellpadding="10px" cellspacing="10px" width="100%"  align="center" style="padding: 150px">
         <tr>
 
@@ -111,7 +30,7 @@
     <tr>
         <th>
             <h:outputLabel id="clock"/>
-            <h:form>
+            <h:form >
                <h:commandButton value="Начать" action="#{navigationController.moveToPage2}"  style="width: 120px"/>
             </h:form>
 
@@ -122,6 +41,6 @@
 
 
 
-    <div></div>
+    <div class="spec"></div>
 </h:body>
 </html>
