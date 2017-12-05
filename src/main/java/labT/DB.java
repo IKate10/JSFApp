@@ -48,11 +48,12 @@ public class DB {
         int pageSize = 10;
 
         ScrollableResults resultScroll = query.scroll(ScrollMode.SCROLL_INSENSITIVE);
-        resultScroll.first();
+        resultScroll.beforeFirst();
         resultScroll.scroll(0);
 
-        for (int i = 0; i < pageSize; i++) {
-            points.add(new Point(resultScroll.getDouble('x'), resultScroll.getDouble('y'), resultScroll.getDouble('r')));
+        for (int i = 0; i < pageSize&&resultScroll.next(); i++) {
+            points.add(new Point((double)resultScroll.get()[1], (double)resultScroll.get()[2], (double)resultScroll.get()[3]));
+
         }
         if (resultScroll.next()) {
             session.close();
