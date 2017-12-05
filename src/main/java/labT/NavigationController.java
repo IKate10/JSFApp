@@ -23,10 +23,6 @@ public class NavigationController implements Serializable {
         return "home";
     }
 
-    public String processPage2() {
-        return "main";
-    }
-
 
     public String getPageId() {
         return pageId;

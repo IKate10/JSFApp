@@ -1,9 +1,6 @@
 package labT;
 
 
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIInput;
-import javax.faces.event.ValueChangeEvent;
 import java.io.Serializable;
 
 public class Points implements Serializable {
@@ -21,19 +18,19 @@ public class Points implements Serializable {
         this.r = r;
         checkHitted();
     }
-  //TODO добавить нормальную проверку!!!
+
     public boolean checkHitted() {
-        hitted=false;
-        if(x<=0&&y>=0){
-            if(x>=r/-2||y<=r)
-                hitted=true;
-        }
-        if(x>=0&&y>=0) {
-            if (x*x+y*y<=Math.pow(r/2,2))
+        hitted = false;
+        if (x <= 0 && y >= 0) {
+            if (x >= r / -2 || y <= r)
                 hitted = true;
         }
-        if(x>=0&&y<=0) {
-            if (y<=x-r)
+        if (x >= 0 && y >= 0) {
+            if (x * x + y * y <= Math.pow(r / 2, 2))
+                hitted = true;
+        }
+        if (x >= 0 && y <= 0) {
+            if (y <= x - r)
                 hitted = true;
         }
         return hitted;

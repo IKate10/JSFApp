@@ -19,9 +19,6 @@ public class DB {
 
 
 
-    //прикол в том, что я не могу работать с оракл на своем ноуте, какая-то у них супер сложная система. Но подключение
-    // с исопльзование хибернайта выглядит примерно вот так, как я описала, в несколько файлов, надо долько привязать к какой-то конкретной бд.
-    //TODO проверить
 
     public DB() throws SQLException {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -49,10 +46,8 @@ public class DB {
     public List<Points> getAllPoints() throws SQLException {
         List<Points> points = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
-        SQLQuery query = session.createSQLQuery("SELECT * FROM point");    //хз вот что тут ему не нравится
-        /*
-        я починиль. а не нравилось ему то что createQuery ипользует HQL а не SQL а это немного разные вещи
-        */
+        SQLQuery query = session.createSQLQuery("SELECT * FROM point");
+
 
         int pageSize = 10;
 
