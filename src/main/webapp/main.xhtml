@@ -68,7 +68,8 @@
                     <canvas id="canvas" class="inLeft" width="450px" height="400px"/>
 
                 </th>
-                <h:commandButton class="begin" action="toBeginning" value="В начало"/>
+
+                <h:commandButton value="В начало" action="#{navigationController.moveToHomePage}"  style="width: 120px"/>
 
                 <h:dataTable id="table" class="table" value="#{controller.points}" var="pin" border="1">
                     <h:column>
