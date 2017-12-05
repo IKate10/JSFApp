@@ -19,41 +19,40 @@
 
             <tr>
 
-            <th colspan="2">
+            <th>
 
-
-                    X:
+                X:
                 <p:inputText id="XVal" value="#{controller.point.x}"/>
-                <p:slider styleClass="" for="XVal" step="1" minValue="-5" maxValue="5"  />
+                <p:slider for="XVal" step="1" minValue="-5" maxValue="5" style="width: 100%; height: 10px"  />
 
                 <br/>
 
 
                 Y:
-                <h:inputText id="YVal" value="#{controller.point.y}" width="10px" rendered= "true" required="true"
-                             requiredMessage="required" converterMessage ="not a valid number">
+                <h:inputText id="YVal" value="#{controller.point.y}"  rendered= "true" required="true"
+                             requiredMessage="required" converterMessage ="not a valid number"  style="width:50%; height: 24px">
                     <f:validator validatorId="YValidator"/>
                 </h:inputText>
+
+            <br/>
                <h:message id="mesY" for="YVal"/>
 
-                <h:commandButton styleClass="inLeft addButton" id="addButton" value="Add point">
-                    <f:ajax onevent="addPoint" event="click" execute="pseudoX y pseudoR" listener="#{controller.addPoint}" render="table mesX mesY mesR"/>
-                </h:commandButton>
+
                 <h:message id="mesX" for="pseudoX"/>
 
 
                 <h:inputText maxlength="5" id="pseudoX" styleClass="pseudo" value="#{controller.point.x}" rendered="true" required="true"
-                             requiredMessage="required" converterMessage="not a valid number">
+                             requiredMessage="required" converterMessage="not a valid number" style="width:40%; height: 20px">
                     <f:validator validatorId="XValidator"/>
                 </h:inputText>
 
                 <br/>
                 R:
 
-                <p:spinner id="RVal" stepFactor="0.25" value="#{controller.point.r}" size="10"/>
+                <p:spinner id="RVal" stepFactor="0.25" value="#{controller.point.r}"/>
 
                 <h:inputText maxlength="5" id="pseudoR" styleClass="pseudo" value="#{controller.point.r}" rendered="true" required="true"
-                             requiredMessage="required" converterMessage="not a valid number">
+                             requiredMessage="required" converterMessage="not a valid number" style="width:40%; height: 20px">
                     <f:validator validatorId="RValidator"/>
 
                 </h:inputText>
@@ -68,9 +67,33 @@
                     <canvas id="canvas" class="inLeft" width="450px" height="400px" style="background-image: url(resources/images/image.jpeg)"/>
 
                 </th>
-                <h:commandButton value="В начало" action="#{navigationController.moveToHomePage}"  style="width: 120px"/>
 
-                <h:dataTable id="table" class="tableR" value="#{controller.points}" var="pin" border="1">
+            </tr>
+
+
+            <tr>
+
+
+            <th>
+                <h:commandButton  id="addButton" value="Добавить точку">
+                    <f:ajax onevent="addPoint" event="click" execute="pseudoX y pseudoR" listener="#{controller.addPoint}" render="table mesX mesY mesR" style="width: 220px"/>
+                </h:commandButton>
+            </th>
+
+            <th>
+                <h:commandButton value="В начало" action="#{navigationController.moveToHomePage}"  style="width: 220px"/>
+            </th>
+        </tr>
+
+    </table>
+
+
+
+
+
+
+                <h:dataTable id="table" class="tableR" value="#{controller.points}" var="pin" border="1"  cellpadding="10px" cellspacing="10px" width="100%" align="center"
+                             style="padding: 150px">
                     <h:column>
                         <f:facet name="header">X</f:facet>
                         #{pin.x}
@@ -88,11 +111,6 @@
                         #{pin.hitted}
                     </h:column>
                 </h:dataTable>
-        </tr>
-        </table>
-
-
-
 
 
     </h:form>
