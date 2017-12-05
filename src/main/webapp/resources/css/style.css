@@ -124,3 +124,6 @@ canvas {
 .pseudo {
     visibility: hidden;
 }
+.table{
+    align-self: center;
+}

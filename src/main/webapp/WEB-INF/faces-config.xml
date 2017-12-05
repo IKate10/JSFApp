@@ -12,6 +12,24 @@
     </managed-bean>
 
     <managed-bean>
+        <managed-bean-name>db</managed-bean-name>
+        <managed-bean-class>labT.DB</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>points</managed-bean-name>
+        <managed-bean-class>java.util.ArrayList</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>point</managed-bean-name>
+        <managed-bean-class>labT.Point</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
         <managed-bean-name>controller</managed-bean-name>
         <managed-bean-class>labT.PointController</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
@@ -29,23 +47,7 @@
         </managed-property>
     </managed-bean>
 
-    <managed-bean>
-        <managed-bean-name>db</managed-bean-name>
-        <managed-bean-class>labT.DB</managed-bean-class>
-        <managed-bean-scope>none</managed-bean-scope>
-    </managed-bean>
     <!--XML комментарий о боже мой.-->
     <!--\/\/\/ Работает по популярной схеме: крякнем плюнем и склеим скотчем, но работает же-->
-    <managed-bean>
-        <managed-bean-name>points</managed-bean-name>
-        <managed-bean-class>java.util.ArrayList</managed-bean-class>
-        <managed-bean-scope>none</managed-bean-scope>
-    </managed-bean>
-
-    <managed-bean>
-        <managed-bean-name>point</managed-bean-name>
-        <managed-bean-class>labT.Points</managed-bean-class>
-        <managed-bean-scope>none</managed-bean-scope>
-    </managed-bean>
 
 </faces-config>

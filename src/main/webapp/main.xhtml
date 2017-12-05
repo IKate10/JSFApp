@@ -6,13 +6,13 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Lab9 var.21274</title>
-
+    <h:outputStylesheet library="css" name="style.css"  />
     <script src="resources/js/check.js" type="text/javascript"/>
-
 </h:head>
 <h:body>
     <div class="spec"></div>
-    <h:outputStylesheet library="css" name="style.css"  />
+
+
     <h:form id="mainForm" style="padding-left: 15px; padding-top: 15px; padding-bottom: 10px">
         <table class="tableR" border="1" cellpadding="10px" cellspacing="10px" width="100%" align="center"
                style="padding: 150px">
@@ -24,7 +24,7 @@
 
                     X:
                 <p:inputText id="XVal" value="#{controller.point.x}"/>
-                <p:slider styleClass="slide" for="XVal" step="1" minValue="-20" maxValue="20"  />
+                <p:slider styleClass="" for="XVal" step="1" minValue="-5" maxValue="5"  />
 
                 <br/>
 
@@ -65,14 +65,12 @@
             </th>
 
                 <th>
-                    <canvas id="canvas" class="inLeft" width="450px" height="400px"/>
+                    <canvas id="canvas" class="inLeft" width="450px" height="400px" style="background-image: url(resources/images/image.jpeg)"/>
 
                 </th>
-
-
                 <h:commandButton value="В начало" action="#{navigationController.moveToHomePage}"  style="width: 120px"/>
 
-                <h:dataTable id="table" class="table" value="#{controller.points}" var="pin" border="1">
+                <h:dataTable id="table" class="tableR" value="#{controller.points}" var="pin" border="1">
                     <h:column>
                         <f:facet name="header">X</f:facet>
                         #{pin.x}

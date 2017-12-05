@@ -43,7 +43,7 @@ public class PointController implements Serializable {
         return db;
     }
 
-    public void setDb(DB dB) {
+    public void setDb(DB db) {
         this.db = db;
     }
 

@@ -34,7 +34,14 @@ function drawPoints() {
             }
         }
     }
+}
 
+function addPoint() {
+    var x = document.forms["mainForm"]["XVal"].value;
+    var y = document.forms["mainForm"]["YVal"].value;
+    var r = document.forms["mainForm"]["RVal"].value;
+
+}
 
     function validateForm() {
         var x = document.forms["mainForm"]["XVal"].value;
@@ -65,7 +72,7 @@ function drawPoints() {
 
     }
 
-}
+
 
 
 
@@ -85,8 +92,6 @@ function getPosition(element) {
     }
     return {x: xPos, y: yPos};
 }
-
-
 
 
 window.onload = function () {
