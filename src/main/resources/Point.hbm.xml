@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="labT.Point" table="point" schema="public" catalog="pipLab3">
+        <id name="id">
+            <column name="id" sql-type="serial"/>
+        </id>
+        <property name="x">
+            <column name="x" sql-type="double precision" precision="-1" not-null="true"/>
+        </property>
+        <property name="y">
+            <column name="y" sql-type="double precision" precision="-1" not-null="true"/>
+        </property>
+        <property name="r">
+            <column name="r" sql-type="double precision" precision="-1" not-null="true"/>
+        </property>
+        <property name="ishitted">
+            <column name="ishitted" sql-type="boolean" not-null="false"/>
+        </property>
+    </class>
+</hibernate-mapping>

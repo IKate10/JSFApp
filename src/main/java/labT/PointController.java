@@ -3,16 +3,20 @@ package labT;
 import javax.annotation.PostConstruct;
 import javax.faces.component.UIInput;
 import javax.faces.event.AjaxBehaviorEvent;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class PointController {
+public class PointController implements Serializable {
     private DB db;
-    private List<Points> points;
-    private Points point;
+    private List<Point> points;
+    private Point point;
     private UIInput pseudoR;
+
+    public PointController() {
+    }
 
     public UIInput getPseudoR() {
         return pseudoR;
@@ -29,7 +33,7 @@ public class PointController {
             point.checkHitted();
             points.add(point);
             db.addPoint(point);
-            point = new Points(point.getX(), point.getY(), point.getR());
+            point = new Point(point.getX(), point.getY(), point.getR());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -43,34 +47,30 @@ public class PointController {
         this.db = db;
     }
 
-    public Points getPoint() {
+    public Point getPoint() {
         return point;
     }
 
-    public void setPoint(Points point) {
+    public void setPoint(Point point) {
         this.point = point;
     }
 
-    public List<Points> getPoints() {
+    public List<Point> getPoints() {
         return points;
     }
 
-    public void setPoints(List<Points> points) {
+    public void setPoints(List<Point> points) {
         this.points = points;
     }
 
     @PostConstruct
     public void initList() {
         try {
-            point.setR(1.0);
             points = db.getAllPoints();
+            point.setR(1.0);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         //хз зачем тут этот catch но пусть пока будет. С ним работает и ладно
-        catch (NullPointerException ex){
-            points=new ArrayList<>();
-            point=new Points(0,0,1);
-        }
     }
 }

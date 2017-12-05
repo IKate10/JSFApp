@@ -19,6 +19,9 @@ public class DB {
 
 
 
+    //прикол в том, что я не могу работать с оракл на своем ноуте, какая-то у них супер сложная система. Но подключение
+    // с исопльзование хибернайта выглядит примерно вот так, как я описала, в несколько файлов, надо долько привязать к какой-то конкретной бд.
+    //TODO проверить
 
     public DB() throws SQLException {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -36,18 +39,20 @@ public class DB {
     }
 
 
-    public void addPoint(Points point) throws SQLException {
+    public void addPoint(Point point) throws SQLException {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.createSQLQuery("insert into point(x, y, r, ishitted) VALUES (" + point.getX() + ", " + point.getY() + ", "
-                + point.getR() + ", " + point.isHitted() + ")");
+                + point.getR() + ", " + point.getIshitted() + ")");
         session.close();
     }
 
-    public List<Points> getAllPoints() throws SQLException {
-        List<Points> points = new ArrayList<>();
+    public List<Point> getAllPoints() throws SQLException {
+        List<Point> points = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
-        SQLQuery query = session.createSQLQuery("SELECT * FROM point");
-
+        SQLQuery query = session.createSQLQuery("SELECT * FROM point");    //хз вот что тут ему не нравится
+        /*
+        я починиль. а не нравилось ему то что createQuery ипользует HQL а не SQL а это немного разные вещи
+        */
 
         int pageSize = 10;
 
@@ -56,7 +61,7 @@ public class DB {
         resultScroll.scroll(0);
 
         for (int i = 0; i < pageSize; i++) {
-            points.add(new Points(resultScroll.getDouble('x'), resultScroll.getDouble('y'), resultScroll.getDouble('r')));
+            points.add(new Point(resultScroll.getDouble('x'), resultScroll.getDouble('y'), resultScroll.getDouble('r')));
         }
         if (resultScroll.next()) {
             session.close();
