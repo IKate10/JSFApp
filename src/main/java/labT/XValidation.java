@@ -7,7 +7,6 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
-
 @FacesValidator("XValidator")
 public class XValidation implements Validator {
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {

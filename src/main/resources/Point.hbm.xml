@@ -4,20 +4,23 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="labT.Point" table="point" schema="public" catalog="pipLab3">
+    <class name="labT.Point" table="point" schema="public">
         <id name="id">
-            <column name="id" sql-type="serial"/>
+            <column name="id" sql-type="int"/>
+            <generator class="sequence">
+                <param name="sequence">point_id_seq</param>
+            </generator>
         </id>
-        <property name="x">
+        <property name="x" type="double">
             <column name="x" sql-type="double precision" precision="-1" not-null="true"/>
         </property>
-        <property name="y">
+        <property name="y" type="double">
             <column name="y" sql-type="double precision" precision="-1" not-null="true"/>
         </property>
-        <property name="r">
+        <property name="r" type="double">
             <column name="r" sql-type="double precision" precision="-1" not-null="true"/>
         </property>
-        <property name="ishitted">
+        <property name="ishitted" type="java.lang.Boolean">
             <column name="ishitted" sql-type="boolean" not-null="false"/>
         </property>
     </class>

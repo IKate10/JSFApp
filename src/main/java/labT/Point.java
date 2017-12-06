@@ -1,6 +1,8 @@
 package labT;
 
-public class Point {
+import java.io.Serializable;
+
+public class Point implements Serializable{
     private int id;
     private double x;
     private double y;
@@ -106,7 +108,7 @@ public class Point {
                 ishitted = true;
         }
         if(x>=0&&y<=0) {
-            if (y<=x-r)
+            if (y>=x-r)
                 ishitted = true;
         }
         return ishitted;

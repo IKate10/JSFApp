@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.component.UIInput;
 import javax.faces.event.AjaxBehaviorEvent;
 import java.io.Serializable;
+import java.sql.BatchUpdateException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +15,10 @@ public class PointController implements Serializable {
     private List<Point> points;
     private Point point;
     private UIInput pseudoR;
+    private int id;
 
     public PointController() {
+        id=1;
     }
 
     public UIInput getPseudoR() {
@@ -26,16 +29,31 @@ public class PointController implements Serializable {
         this.pseudoR = pseudoR;
     }
 
-    public void addPoint(AjaxBehaviorEvent event) {
+    public void addPoint(AjaxBehaviorEvent event)throws SQLException {
 
         try {
             System.out.println("points: " + points);
             point.checkHitted();
+                points.add(point);
+                db.addPoint(point);
+            point = new Point(point.getX(), point.getY(), point.getR());
+        }
+        catch (BatchUpdateException e){
+            throw e.getNextException();
+        }
+    }
+
+    public void addPoint()throws SQLException {
+        try {
+            System.out.println("points: " + points);
+            point.checkHitted();
+            //point.setId(id);
+            //id++;
             points.add(point);
             db.addPoint(point);
             point = new Point(point.getX(), point.getY(), point.getR());
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (BatchUpdateException e) {
+            throw new SQLException(e.getNextException());
         }
     }
 
@@ -71,6 +89,5 @@ public class PointController implements Serializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        //хз зачем тут этот catch но пусть пока будет. С ним работает и ладно
     }
 }

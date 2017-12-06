@@ -1,6 +1,8 @@
 package labT;
 
 
+import java.io.Serializable;
+import java.sql.BatchUpdateException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,8 +13,8 @@ import org.hibernate.*;
 import com.user.util.HibernateUtil;
 import com.user.DBUser;
 
-public class DB {
-/*
+public class DB implements Serializable {
+
     public DB() throws SQLException {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -24,20 +26,23 @@ public class DB {
         user.setUsername("superman");
         user.setCreatedBy("system");
         user.setCreatedDate(new Date());
-        session.save(user);
+        session.saveOrUpdate(user);
         session.getTransaction().commit();
-
+        session.close();
     }
-*/
 
-    public DB() {
-    }
+
+//    public DB() {
+  //  }
 
     public void addPoint(Point point) throws SQLException {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.createSQLQuery("insert into point(x, y, r, ishitted) VALUES (" + point.getX() + ", " + point.getY() + ", "
-                + point.getR() + ", " + point.getIshitted() + ")");
-        session.close();
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            //session.createSQLQuery("insert into point(x, y, r, ishitted) VALUES (" + point.getX() + ", " + point.getY() + ", " + point.getR() + ", " + point.getIshitted() + ")");
+            session.saveOrUpdate(point);
+            session.getTransaction().commit();
+            session.close();
+
     }
 
     public List<Point> getAllPoints() throws SQLException {
