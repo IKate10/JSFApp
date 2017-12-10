@@ -17,24 +17,53 @@ function imgClickHandler(ClickEvent) {
 
 
 function drawPoints() {
-    var b_canvas = document.getElementById("canv");
-    b_canvas.width = b_canvas.width;
-    var b_context = b_canvas.getContext("2d");
-    var x;
-    var y;
-    var r = document.forms["mainForm"]["RVal"].value;
-    if (r.length == 0) {
-        return;
-    } else {
-        if (isNaN(r) && r.length != 0) {
-            return;
-        } else {
-            if (r > 5 || r < 2) {
-                return;
-            }
+    var canvas=document.getElementById("canvas");
+    var context=canvas.getContext("2d");
+    var r = $("#mainForm\\:RVal_input").val();
+    //alert(r);
+    context.clearRect(0,0,canvas.width, canvas.height);
+    var align = document.getElementById("canvas").getBoundingClientRect();
+    var midX=align.left+align.width/2;
+    var midY=align.top+align.height/2;
+    var cou = 0;
+    var table = document.getElementById("mainForm:table");
+    var len=table.rows.length;
+    //alert(len);
+    $("#mainForm\\:table").find("tr").each(function () {
+        var x;
+        var y;
+        var isHitted;
+        var c = 0;
+        cou+=1;
+        if(cou>1) {
+            $(this).find("td").each(function () {
+                if (c === 0)
+                    x = $(this).text();
+                if (c === 1)
+                    y = $(this).text();
+                if (c === 3) {
+                    isHitted = $(this).text().trim();
+                    if(isHitted !== "") {
+                        if (isHitted==='true') {
+                            context.fillStyle = "#00ff00";
+                        } else {
+                            context.fillStyle = "#ff0000";
+                        }
+                        //alert(isHitted);
+                        x = x * 93 / r + 127;
+                        y = y * (-93) / r + 127;
+                        context.fillRect(x, y, 2, 2);
+                        //alert(x + "|" + y);
+                    }
+                }
+                c++;
+            });
         }
-    }
+    });
+
 }
+
+
 
 function addPoint() {
     var x = document.forms["mainForm"]["XVal"].value;
@@ -94,15 +123,5 @@ function getPosition(element) {
 }
 
 
-window.onload = function () {
-    document.getElementById('mainForm:XVal').onclick = function () {
-        document.getElementById('mainForm:XVal').value = this.value;
-    }
-    document.getElementById('mainForm:YVal').onkeyup = function () {
-        this.value = checkIntervalY(this.value);
-    }
-    document.getElementById('mainForm:YVal').onchange = function () {
-        this.value = checkIntervalY(this.value);
-    }
-}
+window.onload = drawPoints;
 

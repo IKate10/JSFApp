@@ -5,7 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <title>Lab9 var.21274</title>
+    <title>Lab3</title>
     <h:outputStylesheet library="css" name="style.css"  />
     <script src="resources/js/check.js" type="text/javascript"/>
 </h:head>
@@ -19,49 +19,29 @@
 
             <tr>
 
-            <th>
+                <th>
 
-                X:
-                <p:inputNumber id="XVal" value="#{controller.point.x}" minValue="-5" maxValue="5"/>
-                <p:slider for="XVal" step="1" minValue="-5" maxValue="5" style="width: 100%; height: 10px"  />
+                    X:
+                    <p:inputNumber id="XVal" value="#{controller.point.x}" minValue="-5" maxValue="5"/>
+                    <p:slider for="XVal" step="1" minValue="-5" maxValue="5" style="width: 100%; height: 10px"  />
 
-                <br/>
-                
-                Y:
-                <h:inputText id="YVal" value="#{controller.point.y}"  rendered= "true" required="true"
-                             requiredMessage="required" converterMessage ="not a valid number"  style="width:50%; height: 24px">
-                    <f:validator validatorId="YValidator"/>
-                </h:inputText>
+                    <br/>
 
-            <br/>
-               <h:message id="mesY" for="YVal"/>
+                    Y:
+                    <h:inputText id="YVal" value="#{controller.point.y}"  rendered= "true" required="true"
+                                 requiredMessage="required" converterMessage ="not a valid number"  style="width:50%; height: 24px">
+                        <f:validator validatorId="YValidator"/>
+                    </h:inputText>
 
+                    <br/>
+                    <h:message id="mesY" for="YVal"/>
 
+                    <br/>
+                    R:
 
-<!--
-                <h:message id="mesX" for="pseudoX"/>
-                <h:inputText maxlength="5" id="pseudoX" styleClass="pseudo" value="#{controller.point.x}" rendered="true" required="true"
-                             requiredMessage="required" converterMessage="not a valid number" style="width:40%; height: 20px">
-                    <f:validator validatorId="XValidator"/>
-                </h:inputText>
--->
+                    <p:spinner id="RVal" stepFactor="0.25" value="#{controller.point.r}" min="1" max="4" onchange="drawPoints()"/>
 
-                <br/>
-                R:
-
-                <p:spinner id="RVal" stepFactor="0.25" value="#{controller.point.r}" min="1" max="4"/>
-<!--
-                <h:inputText maxlength="5" id="pseudoR" styleClass="pseudo" value="#{controller.point.r}" rendered="true" required="true"
-                             requiredMessage="required" converterMessage="not a valid number" style="width:40%; height: 20px">
-                    <f:validator validatorId="RValidator"/>
-
-                </h:inputText>
-                <h:message for="pseudoR" id="mesR"/>
--->
-
-
-
-            </th>
+                </th>
 
                 <th>
                     <canvas id="canvas" class="inLeft" width="450px" height="400px" style="background-image: url(resources/images/image.jpeg)"/>
@@ -74,43 +54,43 @@
             <tr>
 
 
-            <th>
-                <h:commandButton  id="addButton" value="Добавить точку" action="#{controller.addPoint}">
-                    <f:ajax onevent="addPoint" event="click" execute="pseudoX y pseudoR" listener="#{controller.addPoint}" render="table mesX mesY mesR" style="width: 220px"/>
-                </h:commandButton>
-            </th>
+                <th>
+                    <h:commandButton  id="addButton" value="Добавить точку" action="#{controller.addPoint}">
+                        <f:ajax onevent="addPoint" event="click" execute="pseudoX y pseudoR" listener="#{controller.addPoint}" render="table mesX mesY mesR" style="width: 220px"/>
+                    </h:commandButton>
+                </th>
 
-            <th>
-                <h:commandButton value="В начало" action="#{navigationController.moveToHomePage}"  style="width: 220px"/>
-            </th>
-        </tr>
+                <th>
+                    <h:commandButton value="В начало" action="#{navigationController.moveToHomePage}"  style="width: 220px"/>
+                </th>
+            </tr>
 
-    </table>
-
-
+        </table>
 
 
 
 
-                <h:dataTable id="table" class="tableR" value="#{controller.points}" var="pin" border="1"  cellpadding="10px" cellspacing="10px" width="100%" align="center"
-                             style="padding: 150px">
-                    <h:column>
-                        <f:facet name="header">X</f:facet>
-                        #{pin.x}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Y</f:facet>
-                        #{pin.y}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">R</f:facet>
-                        #{pin.r}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Is Hitted</f:facet>
-                        #{pin.ishitted}
-                    </h:column>
-                </h:dataTable>
+
+
+        <h:dataTable id="table" class="tableR" value="#{controller.points}" var="pin" border="1"  cellpadding="10px" cellspacing="10px" width="100%" align="center"
+                     style="padding: 150px">
+            <h:column>
+                <f:facet name="header">X</f:facet>
+                #{pin.x}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Y</f:facet>
+                #{pin.y}
+            </h:column>
+            <h:column>
+                <f:facet name="header">R</f:facet>
+                #{pin.r}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Is Hitted</f:facet>
+                #{pin.ishitted}
+            </h:column>
+        </h:dataTable>
 
 
     </h:form>
