@@ -1,0 +1,129 @@
+mm {
+    font-size: 15px;
+    font-family: monospace;
+    color: #000000;
+}
+
+mm[title] {
+    color: #2165d3;
+}
+
+BODY {
+    background: #fbfdff;
+}
+
+mm > mm[title] {
+    color: #000000;
+    font-family: 'Times New Roman', serif;
+}
+
+error {
+    font-size: 15px;
+    font-family: monospace;
+    color: #FF0000;
+}
+
+DIV.spec {
+    padding: 20px;
+    background-color: #03acea;
+    background-image: linear-gradient(rgba(255, 255, 255, .2) 1px, rgba(255, 255, 255, 0) 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .2) 1px, rgba(255, 255, 255, 0) 1px);
+    background-size: 10px 10px;
+    border-radius: 5px;
+    text-align: center;
+    font: 25px/1 Georgia;
+    color: #FFF;
+}
+
+DIV.spec:before,
+DIV.spec:after {
+    display: inline-block;
+    padding: 3px 7px;
+    font-style: normal;
+    border: 1px dashed;
+}
+
+DIV.spec:before {
+    content: "Лабораторная работа";
+    margin-right: 20px;
+}
+
+DIV.spec:after {
+    content: "№3";
+    margin-left: 20px;
+}
+
+.tableR {
+    border-spacing: 10px;
+    border: 1px;
+}
+
+.tableR td,
+.tableR th {
+    padding: 10px;
+    border-left: 1px solid;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-radius: 10px;
+}
+
+.tableR th {
+    background: #ffffff;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-radius: 10px;
+}
+.p-spinner {
+    width:30px;
+    background-color: white;
+}
+#name {
+    font-size: 270%;
+}
+
+#group {
+    font-size: 150%;
+}
+
+.left {
+    float: left;
+    width: 34.5%;
+    padding-left: 3px;
+    color: #001379;
+}
+
+.Xclass {
+    margin-right: 3px;
+    background: #b5fff8;
+    color: #001379;
+}
+
+.Xclass:hover, .addButton:hover, .begin:hover{
+    background: #a5d6f3;
+}
+
+.inLeft {
+    margin-top: 5px;
+}
+
+.addButton {
+    background: #b5fff8;
+    color: #001379;
+}
+
+canvas {
+    background-image: url(/resources/images/image.jpeg);
+}
+
+.slide{
+    width: 50px;
+}
+
+.pseudo {
+    visibility: hidden;
+}
+.table{
+    align-self: center;
+}

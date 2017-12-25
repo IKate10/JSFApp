@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+    http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+
+    <managed-bean>
+        <managed-bean-name>NavigationBean</managed-bean-name>
+        <managed-bean-class>labT.NavigationController</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>db</managed-bean-name>
+        <managed-bean-class>labT.DB</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>points</managed-bean-name>
+        <managed-bean-class>java.util.ArrayList</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>point</managed-bean-name>
+        <managed-bean-class>labT.Point</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>controller</managed-bean-name>
+        <managed-bean-class>labT.PointController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>db</property-name>
+            <value>#{db}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>points</property-name>
+            <value>#{points}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>point</property-name>
+            <value>#{point}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!--XML комментарий о боже мой.-->
+    <!--\/\/\/ Работает по популярной схеме: крякнем плюнем и склеим скотчем, но работает же-->
+
+</faces-config>

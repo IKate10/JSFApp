@@ -48,7 +48,8 @@ public class DB implements Serializable {
     public List<Point> getAllPoints() throws SQLException {
         List<Point> points = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
-        SQLQuery query = session.createSQLQuery("SELECT * FROM point");
+        session.beginTransaction();
+        Query query = session.createQuery("SELECT p FROM Point p");
 
         int pageSize = 10;
 
@@ -63,7 +64,7 @@ public class DB implements Serializable {
         if (resultScroll.next()) {
             session.close();
         }
-
+        session.getTransaction().commit();
         return points;
     }
 

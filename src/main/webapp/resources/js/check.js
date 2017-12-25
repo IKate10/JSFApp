@@ -34,14 +34,14 @@ function drawPoints() {
                 if (c === 3) {
                     isHitted = $(this).text().trim();
                     if(isHitted !== "") {
-                        if (isHitted==='true') {
+                        if (isHitted==='1') {
                             context.fillStyle = "#00ff00";
                         } else {
                             context.fillStyle = "#ff0000";
                         }
                         x = x * 160 / r + 220;
                         y = y * (-160) / r + 219;
-                        context.fillRect(x, y, 2, 2);
+                        context.fillRect(x, y, 6, 6);
                     }
                 }
                 c++;

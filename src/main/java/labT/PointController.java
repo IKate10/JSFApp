@@ -29,19 +29,6 @@ public class PointController implements Serializable {
         this.pseudoR = pseudoR;
     }
 
-    public void addPoint(AjaxBehaviorEvent event)throws SQLException {
-
-        try {
-            System.out.println("points: " + points);
-            point.checkHitted();
-                points.add(point);
-                db.addPoint(point);
-            point = new Point(point.getX(), point.getY(), point.getR());
-        }
-        catch (BatchUpdateException e){
-            throw e.getNextException();
-        }
-    }
 
     public void addPoint()throws SQLException {
         try {
@@ -54,6 +41,14 @@ public class PointController implements Serializable {
             point = new Point(point.getX(), point.getY(), point.getR());
         } catch (BatchUpdateException e) {
             throw new SQLException(e.getNextException());
+        }
+    }
+
+    public void resetR() throws SQLException {
+        for(int i=0;i<points.size();i++){
+            points.get(i).setR(point.getR());
+            points.get(i).checkHitted();
+            db.addPoint(points.get(i));
         }
     }
 

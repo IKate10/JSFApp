@@ -7,7 +7,7 @@ public class Point implements Serializable{
     private double x;
     private double y;
     private double r;
-    private Boolean ishitted;
+    private int ishitted;
 
     public int getId() {
         return id;
@@ -41,11 +41,11 @@ public class Point implements Serializable{
         this.r = r;
     }
 
-    public Boolean getIshitted() {
+    public int getIshitted() {
         return ishitted;
     }
 
-    public void setIshitted(Boolean ishitted) {
+    public void setIshitted(int ishitted) {
         this.ishitted = ishitted;
     }
 
@@ -60,7 +60,7 @@ public class Point implements Serializable{
         if (Double.compare(point.x, x) != 0) return false;
         if (Double.compare(point.y, y) != 0) return false;
         if (Double.compare(point.r, r) != 0) return false;
-        if (ishitted != null ? !ishitted.equals(point.ishitted) : point.ishitted != null) return false;
+        if (ishitted != point.ishitted) return false;
 
         return true;
     }
@@ -76,7 +76,7 @@ public class Point implements Serializable{
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(r);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (ishitted != null ? ishitted.hashCode() : 0);
+        result = 31 * result + ishitted;
         return result;
     }
 
@@ -97,19 +97,19 @@ public class Point implements Serializable{
     public Point() {
     }
 
-    public boolean checkHitted() {
-        ishitted=false;
+    public int checkHitted() {
+        ishitted=0;
         if(x<=0&&y>=0){
-            if(x>=r/-2||y<=r)
-                ishitted=true;
+            if(x>=r/-2&&y<=r)
+                ishitted=1;
         }
         if(x>=0&&y>=0) {
             if (x*x+y*y<=Math.pow(r/2,2))
-                ishitted = true;
+                ishitted = 1;
         }
         if(x>=0&&y<=0) {
             if (y>=x-r)
-                ishitted = true;
+                ishitted = 1;
         }
         return ishitted;
     }

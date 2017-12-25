@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="labT.Point" table="POINT">
+        <id name="id" type="int">
+            <column name="ID" precision="5" scale="0"/>
+            <generator class="sequence">
+                <param name="sequence">POINT_ID_SEQ</param>
+            </generator>
+        </id>
+        <property name="x" type="double">
+            <column name="X" sql-type="double precision" precision="-1" not-null="true"/>
+        </property>
+        <property name="y" type="double">
+            <column name="Y" sql-type="double precision" precision="-1" not-null="true"/>
+        </property>
+        <property name="r" type="double">
+            <column name="R" sql-type="double precision" precision="-1" not-null="true"/>
+        </property>
+        <property name="ishitted" type="int">
+            <column name="ISHITTED" sql-type="int" not-null="false"/>
+        </property>
+    </class>
+</hibernate-mapping>
