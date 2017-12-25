@@ -31,17 +31,12 @@ public class DB implements Serializable {
         session.close();
     }
 
-
-//    public DB() {
-  //  }
-
     public void addPoint(Point point) throws SQLException {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            //session.createSQLQuery("insert into point(x, y, r, ishitted) VALUES (" + point.getX() + ", " + point.getY() + ", " + point.getR() + ", " + point.getIshitted() + ")");
-            session.saveOrUpdate(point);
-            session.getTransaction().commit();
-            session.close();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(point);
+        session.getTransaction().commit();
+        session.close();
 
     }
 
@@ -57,8 +52,8 @@ public class DB implements Serializable {
         resultScroll.beforeFirst();
         resultScroll.scroll(0);
 
-        for (int i = 0; i < pageSize&&resultScroll.next(); i++) {
-            points.add(new Point((double)resultScroll.get()[1], (double)resultScroll.get()[2], (double)resultScroll.get()[3]));
+        for (int i = 0; i < pageSize && resultScroll.next(); i++) {
+            points.add(new Point((double) resultScroll.get()[1], (double) resultScroll.get()[2], (double) resultScroll.get()[3]));
 
         }
         if (resultScroll.next()) {

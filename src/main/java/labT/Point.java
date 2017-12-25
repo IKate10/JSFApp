@@ -2,7 +2,7 @@ package labT;
 
 import java.io.Serializable;
 
-public class Point implements Serializable{
+public class Point implements Serializable {
     private int id;
     private double x;
     private double y;
@@ -98,17 +98,17 @@ public class Point implements Serializable{
     }
 
     public int checkHitted() {
-        ishitted=0;
-        if(x<=0&&y>=0){
-            if(x>=r/-2&&y<=r)
-                ishitted=1;
-        }
-        if(x>=0&&y>=0) {
-            if (x*x+y*y<=Math.pow(r/2,2))
+        ishitted = 0;
+        if (x <= 0 && y >= 0) {
+            if (x >= r / -2 && y <= r)
                 ishitted = 1;
         }
-        if(x>=0&&y<=0) {
-            if (y>=x-r)
+        if (x >= 0 && y >= 0) {
+            if (x * x + y * y <= Math.pow(r / 2, 2))
+                ishitted = 1;
+        }
+        if (x >= 0 && y <= 0) {
+            if (y >= x - r)
                 ishitted = 1;
         }
         return ishitted;

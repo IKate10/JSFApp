@@ -14,28 +14,15 @@ public class PointController implements Serializable {
     private DB db;
     private List<Point> points;
     private Point point;
-    private UIInput pseudoR;
-    private int id;
 
     public PointController() {
-        id=1;
-    }
-
-    public UIInput getPseudoR() {
-        return pseudoR;
-    }
-
-    public void setPseudoR(UIInput pseudoR) {
-        this.pseudoR = pseudoR;
     }
 
 
-    public void addPoint()throws SQLException {
+    public void addPoint() throws SQLException {
         try {
             System.out.println("points: " + points);
             point.checkHitted();
-            //point.setId(id);
-            //id++;
             points.add(point);
             db.addPoint(point);
             point = new Point(point.getX(), point.getY(), point.getR());
@@ -45,7 +32,7 @@ public class PointController implements Serializable {
     }
 
     public void resetR() throws SQLException {
-        for(int i=0;i<points.size();i++){
+        for (int i = 0; i < points.size(); i++) {
             points.get(i).setR(point.getR());
             points.get(i).checkHitted();
             db.addPoint(points.get(i));
