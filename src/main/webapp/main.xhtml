@@ -40,9 +40,8 @@
 
                     <br/>
                     R:
-                    <p:spinner id="RVal" stepFactor="0.25" value="#{controller.point.r}" min="1" max="4"
-                               onchange="drawPoints()">
-                        <p:ajax listener="#{controller.resetR}" render="table"/>
+                    <p:spinner id="RVal" stepFactor="0.25" value="#{controller.point.r}" min="1" max="4">
+                        <p:ajax listener="#{controller.resetR}" render="table" update="table" oncomplete="drawPoints()"/>
                     </p:spinner>
 
 

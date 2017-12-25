@@ -38,8 +38,8 @@ function drawPoints() {
                         } else {
                             context.fillStyle = "#ff0000";
                         }
-                        x = x * 160 / r + 220;
-                        y = y * (-160) / r + 219;
+                        x = x * 160 / r + 217;
+                        y = y * (-160) / r + 216;
                         context.fillRect(x, y, 6, 6);
                     }
                 }
